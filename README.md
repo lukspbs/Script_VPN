@@ -21,6 +21,7 @@ $horaOn  = "08:00"            # Início do horário comercial
 $horaOff = "18:00"            # Término do horário comercial#
 ````
 
+- Crie uma pasta em "C:\Scripts\" e adicione os arquivos .vps e .vbs
 - Aperte Win + R e digite "taskschd.msc".
 - Crie uma nova tarefa (Não Tarefa Básica)
 - Nome: VPN_Auto.
