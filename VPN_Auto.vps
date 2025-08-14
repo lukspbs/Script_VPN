@@ -1,0 +1,22 @@
+# CONFIGURAÇÃO
+$vpn     = "NOME_DA_VPN"                # Nome da VPN
+$usuario = "SEU_USUARIO"       # Coloque seu usuário
+$senha   = "SUA_SENHA"         # Coloque sua senha
+$horaOn  = "XX:XX"             # Coloque o Horário On
+$horaOff = "XX:XX"             # Coloque o Horário Off
+
+while ($true) {
+    $agora = Get-Date -Format "HH:mm"
+    $conectado = rasdial | Select-String $vpn
+
+    if ($agora -ge $horaOn -and $agora -lt $horaOff) {
+        # Deve estar conectado
+        if (-not $conectado) { rasdial $vpn $usuario $senha }
+    }
+    else {
+        # Deve estar desconectado
+        if ($conectado) { rasdial $vpn /disconnect }
+    }
+
+    Start-Sleep 30
+}
